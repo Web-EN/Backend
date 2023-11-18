@@ -16,9 +16,9 @@ const verifyLogin = async (req, res) => {
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);
-        req.session.isAuth = true;
         if (user) {
-        res.status(200).json({
+            req.session.isAuth = true;
+            res.status(200).json({
             user,
             sessionId: req.session.id,
         });
